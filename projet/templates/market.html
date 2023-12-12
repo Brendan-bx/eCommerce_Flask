@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Market Page {% endblock %}
+ 
+{% block content %}
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Barcode</th>
+        <th>Price</th>
+        <th>Options</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in item_name %}
+      <tr>
+  
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.barcode }}</td>
+        <td>{{ item.price }}€</td>
+        <td>
+          <button class="btn btn-outline btn-info">More Info</button>
+          <button class="btn btn-outline btn-success">Purchase</button>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
