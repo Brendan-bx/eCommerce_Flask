@@ -17,7 +17,7 @@
       </thead>
       <tbody>
         {% for item in item_name %}
-        {% include 'includes/item_modal.html'%}
+        {% include 'includes/item_modal.html' %}
         <tr>
           <td>{{ item.id }}</td>
           <td>{{ item.name }}</td>
@@ -25,7 +25,7 @@
           <td>{{ item.price }}€</td>
           <td>
             <button class="btn btn-outline btn-info" data-toggle="modal" data-target="#infoModal">More Info</button>
-            <button class="btn btn-outline btn-success">Purchase</button>
+            <button class="btn btn-outline btn-success" data-toggle="modal" data-target="#purchaseModal">Purchase</button>
           </td>
         </tr>
         {% endfor %}
@@ -34,6 +34,24 @@
   </div>
   <div class="col-4">
     <h3>Items Owned</h3>
-  </div>
+    <div class="col-md-6">
+      {% for owned_item in owned_items %}
+        {% include 'includes/owned_item_modal.html' %}
+      <div style="margin-bottom: 15px" class="card text-center bg-dark">
+        <div class="card-body">
+          <h5 class="card-title">{{owned_item.name  }}</h5>
+         
+          <p class="card-text"><strong>
+              This item cost Rs.{{owned_item.price}}
+            </strong>
+            <button type="button" class="btn btn-outline-danger" style="margin-bottom: 5px" data-toggle="modal" data-target="sellModal-{{owned_item.id}}">
+              Sell this item
+            </button>
+          </p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
 </div>
 {% endblock %}
