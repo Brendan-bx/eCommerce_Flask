@@ -33,7 +33,7 @@ def market_page():
             if current_user.can_sell(s_item_obj):
                 s_item_obj.sell(current_user)
                 flash(f"You have successfully sell {s_item_obj.name} for {s_item_obj.price}€")
-        return redirect(url_for('market_page'))
+            return redirect(url_for('market_page'))
     if request.method == 'GET':
         owned_items = Item.query.filter_by(owner=current_user.id)
         return render_template('market.html', item_name=Item.query.filter_by(owner=''), purchase_form = purchase_form, owned_items=owned_items, sell_form=sell_form)
